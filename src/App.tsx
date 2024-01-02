@@ -15,7 +15,10 @@ function App() {
       }
     },
     palette: {
-        primary: amber
+        primary: {
+          main: '#ffca28',
+          dark: '#ffb300'
+        }
     }
   });
 
