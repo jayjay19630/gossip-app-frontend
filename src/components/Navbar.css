@@ -2,8 +2,7 @@
 
 .navbar {
     height: 60px;
-    background-color: #FBE491 ;
-    color: white;
+    background-color: #f7c516 ;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,7 +14,7 @@
         font-weight: bold;
         font-family: 'DM Serif Display', sans-serif;
         color: rgba(18, 18, 18, 0.807);
-        font-size: 24px;
+        font-size: 18px;
     }
 
     .links {
@@ -28,7 +27,7 @@
     }
 
     .logo-text img {
-        width: 25px;
+        width: 18px;
         height: auto;
     }
 
@@ -38,7 +37,8 @@
     
     li a {
         display: block;
-        color: white;
+        color: black;
+        font-family: 'DM Serif Display', sans-serif;
         text-align: center;
         padding: 16px;
         text-decoration: none;
@@ -46,5 +46,5 @@
     }
       
     li a:hover {
-        background-color: #111111;
+        background-color: white;
     }

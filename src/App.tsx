@@ -1,10 +1,13 @@
 import './App.css'
 import { Home } from './pages/Home';
-import { Navbar } from './components/Navbar';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material';
+import { Routes, Route } from 'react-router-dom';
+import { Signup } from './pages/Signup';
+import { Login } from './pages/Login';
 
 function App() {
+  
   const theme = createTheme({
     typography: {
       button: {
@@ -22,10 +25,11 @@ function App() {
   });
 
   return (
-    <ThemeProvider theme={theme}>
-      <Navbar/>
-      <Home/>
-    </ThemeProvider>
+    <Routes>
+      <Route path='/' element={<ThemeProvider theme={theme}><Home/></ThemeProvider>}/>
+      <Route path='/signup' element={<ThemeProvider theme={theme}><Signup/></ThemeProvider>}/>
+      <Route path='/login' element={<ThemeProvider theme={theme}><Login/></ThemeProvider>}/>
+    </Routes>
   );
 }
 
