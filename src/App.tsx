@@ -2,7 +2,6 @@ import './App.css'
 import { Home } from './pages/Home';
 import { Navbar } from './components/Navbar';
 import { ThemeProvider } from '@emotion/react';
-import { amber } from '@mui/material/colors'
 import { createTheme } from '@mui/material';
 
 function App() {

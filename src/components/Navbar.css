@@ -27,6 +27,11 @@
         display: inline-block;
     }
 
+    .logo-text img {
+        width: 25px;
+        height: auto;
+    }
+
     li {
         float: left
     }
