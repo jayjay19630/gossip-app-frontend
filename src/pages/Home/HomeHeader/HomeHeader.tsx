@@ -7,7 +7,7 @@ export const HomeHeader = () => {
                 <div className="home-title">grapevine</div>
                 <div className="home-subtitle">a web forum for all things NUS</div>
             </div>
-            <img src="src/assets/gossip-ear.jpeg"></img>
+            <img src="src/assets/images/gossip-ear.jpeg"></img>
         </div>
     );
 }
