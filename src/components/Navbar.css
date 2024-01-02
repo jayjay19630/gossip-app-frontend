@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;700&display=swap');
 
 .navbar {
-    height: 50px;
+    height: 60px;
     background-color: #FBE491 ;
     color: white;
     display: flex;
@@ -14,7 +14,7 @@
     .logo-text {
         font-weight: bold;
         font-family: 'DM Serif Display', sans-serif;
-        color: black;
+        color: rgba(18, 18, 18, 0.807);
         font-size: 24px;
     }
 
