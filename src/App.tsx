@@ -12,7 +12,7 @@ function App() {
     typography: {
       button: {
         fontFamily: 'Arial',
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: 'bold',
       }
     },
