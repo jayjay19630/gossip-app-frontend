@@ -1,4 +1,3 @@
-import { Navbar } from '../../components/Navbar';
 import { Formbox } from '../../components/form/Formbox';
 import './index.css';
 
