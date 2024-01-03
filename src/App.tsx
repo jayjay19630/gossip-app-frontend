@@ -14,7 +14,7 @@ function App() {
         fontFamily: 'Arial',
         fontSize: 18,
         fontWeight: 'bold',
-      }
+      },
     },
     palette: {
         primary: {

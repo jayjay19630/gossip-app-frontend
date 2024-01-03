@@ -1,0 +1,10 @@
+.login {
+    background-image: url(../../assets/images/utown.jpg);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
