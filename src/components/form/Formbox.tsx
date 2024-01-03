@@ -1,6 +1,7 @@
 import './formbox.css'
 import { useForm } from "react-hook-form";
 import { Button, Stack, TextField } from "@mui/material";
+import { LoginCheckbox } from './Checkbox';
 
 type FormValues = {
     username: string;
@@ -36,7 +37,8 @@ export const Formbox = (props: {state :string}) => {
                     InputLabelProps={{
                         style: { color: '#ffffff' }, 
                      }}
-                />                
+                />
+                {props.state==='login' && <LoginCheckbox/>}                
                 <Button className='formbutton' color='primary' type='submit' variant='contained'>{props.state==="signup" ? "Register" : "View Forum"}</Button>
             </Stack>
         </form>
