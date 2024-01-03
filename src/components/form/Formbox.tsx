@@ -2,6 +2,7 @@ import './formbox.css'
 import { useForm } from "react-hook-form";
 import { Button, Stack, TextField } from "@mui/material";
 import { LoginCheckbox } from './Checkbox';
+import { URL_NAME } from '../../data/url'
 
 type FormValues = {
     username: string;
@@ -19,9 +20,14 @@ export const Formbox = (props: {state :string}) => {
     const { errors } = formState;
 
     const onSubmit = (data: FormValues) => {
-        console.log(data);
+        fetch(`${URL_NAME}/users`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
     }
-      
 
     return (
         <form className="formbox" onSubmit={handleSubmit(onSubmit)} noValidate>

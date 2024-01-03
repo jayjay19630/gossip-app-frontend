@@ -1,0 +1,1 @@
+export const URL_NAME = 'http://localhost:3000'

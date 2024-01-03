@@ -6,6 +6,8 @@ import { Routes, Route } from 'react-router-dom';
 import { Signup } from './pages/Signup';
 import { Login } from './pages/Login';
 
+const URL_NAME = 'localhost:3000' 
+
 function App() {
   
   const theme = createTheme({
