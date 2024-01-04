@@ -2,7 +2,7 @@
 
 .home-body {
     background-color: black;
-    height: 750px;
+    height: 700px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,8 +17,11 @@
     }
 
     .example {
-        height: 400px;
-        width: 800px;
+        height: 300px;
+        width: 900px;
         background-color: #f7d34f;
         border-radius: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }

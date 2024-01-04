@@ -3,11 +3,11 @@ import './Post.css'
 import { Favorite } from '@mui/icons-material';
 
 type PostType = {
-    post: {id: number, title: string, content: string, likes: number, username: string, created_at: string, updated_at: string},
+    post: {id: number, title: string, content: string, likes: number, user_id: number, created_at: string, updated_at: string},
     username: string
     tags: number[]
 }
-const wordlimit = 100;
+const wordlimit = 120;
 
 export const Post = (props: PostType) => {
 
@@ -47,8 +47,6 @@ export const Post = (props: PostType) => {
                         {likes + " Likes"} 
                 </Typography>
             </CardActions>
-
-            
         </Card>
     );
 }
