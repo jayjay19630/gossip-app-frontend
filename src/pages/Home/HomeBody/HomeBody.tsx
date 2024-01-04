@@ -13,7 +13,7 @@ export const HomeBody = () => {
 
     //typewriter effect
     const [text] = useTypewriter({
-        words: ["CS1101S was so hard...", "What are NUS extracurriculars like?", "I want to rant about a problem", "Any advice on internship?"],
+        words: ["CS1101S was so hard...", "What are NUS extracurriculars like?", "Relationship problem, need help", "Any advice on internship?", "I need to rant about this"],
         loop: {},
         deleteSpeed: 30
     })
