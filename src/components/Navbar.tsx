@@ -13,6 +13,7 @@ export const Navbar = (props: { onHomePage: boolean, onForumPage: boolean }) => 
             {props.onForumPage && 
             <ul className='links'>
                 <li><Link to='/create'>Create Post</Link></li>
+                <li><Link to='/' onClick={() => localStorage.removeItem('token')}>Log Out</Link></li>
             </ul>}
         </div>
     );
