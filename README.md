@@ -1,30 +1,32 @@
-# React + TypeScript + Vite
+# React-based Gossip App with Material UI Library Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This frontend app, named NUS Grapevine, allows online users to interact with each other on a web forum-like page and discuss topics relevant to certain tags, such as academics, extracurriculars and entertainment. This project was made as a submission to the NUS CVWO assignment 2023/2024. This app wil support several features:
 
-Currently, two official plugins are available:
+* **User authentication and registration:** Users can sign up for an account, solely authenticated by their username
+* **Post creation:** Author can create new posts with a title, text content and several tags if necessary (to be added in future)
+* **Post management:** Author can view, edit, and delete their own posts. (to be added in future, can only view)
+* **Commenting and Liking:** Users can add comments and likes to posts. (to be added in future)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## Expanding the ESLint configuration
+As of 5 January 2024, this app is not yet being deployed. However, it will be deployed sometime in the future.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To get a local copy up and running in the mean time, note the prerequisites and follow these steps.
 
-- Configure the top-level `parserOptions` property like this:
+### Prerequisites
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- [ ] React
+- [ ] Typescript
+- [ ] NPM
+- [ ] Git and Github
+- [ ] Any code editor (VSC, Brackets, etc)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Instructions
+1. Go to https://github.com/positivelyjon/gossip-app-backend and start the backend on your computer.
+2. Open terminal
+3. Navigate to your desired location to place this repository
+4. Copy and paste the following code into the terminal: git clone https://github.com/positivelyjon/gossip-app-frontend
+5. Run `cd gossip-app-frontend`
+6. Run `npm install`
+7. Run `npm run dev`
+8. Open http://localhost:5173 to view the app
