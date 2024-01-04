@@ -1,9 +1,9 @@
 import './formbox.css'
 import { useForm } from "react-hook-form";
 import { Button, Stack, TextField } from "@mui/material";
-import { LoginCheckbox } from './Checkbox';
 import { URL_NAME } from '../../data/url'
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 //types for data received by form
 type FormValues = {
@@ -22,6 +22,7 @@ export const Formbox = (props: {state :string}) => {
     const { errors } = formState;
     const [alreadyTakenError, setAlreadyTakenError] = useState(false);
     const [invalidUsernameError, setInvalidUsernameError] = useState(false);
+    const navigate = useNavigate();
 
     //fetch post for signups
     const onSignupSubmit = (data: FormValues) => {
@@ -43,6 +44,7 @@ export const Formbox = (props: {state :string}) => {
             .then((data) => {
                 localStorage.setItem('username', data.username);
                 localStorage.setItem('token', data.token);
+                navigate('/posts');
             })
     }
 
@@ -66,7 +68,7 @@ export const Formbox = (props: {state :string}) => {
             .then((data) => {
                 localStorage.setItem('username', data.user.username);
                 localStorage.setItem('token', data.token);
-                console.log(localStorage)
+                navigate('/posts');
             })
     }
 
@@ -90,9 +92,10 @@ export const Formbox = (props: {state :string}) => {
                 />
                 {alreadyTakenError && <div className='error'>Username already taken!</div>}
                 {invalidUsernameError && <div className='error'>Invalid username!</div>}
-                {props.state==='login' && <LoginCheckbox/>}                
+                {props.state==='login' && <div className='register'>Don't have an account? <Link to='/signup'>Register Here!</Link></div>}
                 <Button className='formbutton' color='primary' type='submit' variant='contained'>{props.state==="signup" ? "Register" : "View Forum"}</Button>
             </Stack>
         </form>
     );
 }
+

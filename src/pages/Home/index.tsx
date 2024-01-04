@@ -7,7 +7,7 @@ import "./index.tsx"
 export const Home = () => {
     return (
         <div className="home">
-            <Navbar/>
+            <Navbar onHomePage={true} onForumPage={false}/>
             <HomeHeader/>
             <HomeBody/>
             <HomeSignup/>

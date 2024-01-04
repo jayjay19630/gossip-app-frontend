@@ -5,6 +5,7 @@ import { createTheme } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
 import { Signup } from './pages/Signup';
 import { Login } from './pages/Login';
+import { Forum } from './pages/Forum';
 
 function App() {
   
@@ -29,6 +30,7 @@ function App() {
       <Route path='/' element={<ThemeProvider theme={theme}><Home/></ThemeProvider>}/>
       <Route path='/signup' element={<ThemeProvider theme={theme}><Signup/></ThemeProvider>}/>
       <Route path='/login' element={<ThemeProvider theme={theme}><Login/></ThemeProvider>}/>
+      <Route path='/posts' element={<ThemeProvider theme={theme}><Forum/></ThemeProvider>}/>
     </Routes>
   );
 }
