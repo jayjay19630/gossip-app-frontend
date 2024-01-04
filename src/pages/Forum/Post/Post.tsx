@@ -1,13 +1,13 @@
 import { Card, CardActionArea, CardActions, CardContent, IconButton, Typography } from '@mui/material';
 import './Post.css'
-import { Favorite } from '@mui/icons-material';
+import { CenterFocusStrong, Favorite, Person } from '@mui/icons-material';
 
 type PostType = {
     post: {id: number, title: string, content: string, likes: number, user_id: number, created_at: string, updated_at: string},
     username: string
     tags: number[]
 }
-const wordlimit = 120;
+const wordlimit = 115;
 
 export const Post = (props: PostType) => {
 
@@ -28,7 +28,7 @@ export const Post = (props: PostType) => {
                         {props.post.title}
                     </Typography>
                     <Typography sx={{fontSize: 12, fontWeight: 550}} gutterBottom>
-                        {"by " + username}
+                        {" by " + username} 
                     </Typography>
                     <Typography sx={{fontSize: 12}} gutterBottom >
                         {shortenedContent}
@@ -36,7 +36,6 @@ export const Post = (props: PostType) => {
                     <Typography sx={{fontSize: 12}}>
                         {"Last updated " + date}
                     </Typography>
-
                 </CardContent>
             </CardActionArea>
             <CardActions disableSpacing sx={{height: 25}}>
