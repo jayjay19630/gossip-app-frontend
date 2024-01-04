@@ -15,7 +15,7 @@ export const Navbar = (props: { onHomePage: boolean, onForumPage: boolean }) => 
             <ul className='links'>
                 <li><Link to='/create'>Create Post</Link></li>
                 <li><Link to='/' onClick={() => localStorage.removeItem('token')}>Log Out</Link></li>
-                <li className='icon'>  <Person/></li>
+                <li className='icon'><Person/></li>
                 <li className='user'>{localStorage.getItem('username')}</li>
             </ul>}
         </div>

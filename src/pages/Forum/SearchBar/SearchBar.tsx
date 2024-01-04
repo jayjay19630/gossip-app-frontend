@@ -1,4 +1,4 @@
-export const ForumHeader = () => {
+export const SearchBar = () => {
     return (
         <></>
     );
