@@ -7,6 +7,7 @@ import { Loading } from "../Loading/Loading";
 
 type PostType = {
     post: {id: number, title: string, content: string, likes: number, user_id: number, created_at: string, updated_at: string},
+    username: string
     tags: number[]
 }
 
@@ -32,6 +33,7 @@ export const ForumContent = () => {
             })
             .then(data => {
                 setPostData(data);
+                console.log(data);
             })
             .finally(() => setLoading(false));
     }, [])
@@ -39,8 +41,8 @@ export const ForumContent = () => {
     if (loading) return <Loading/>
 
     return (
-        <Stack spacing={2} alignItems={"center"}>
-            {postData.map((item: PostType) => { return <li key={item.post.id}><Post post={item.post} tags={item.tags}/></li> })}
+        <Stack spacing={0.1} alignItems={"center"}>
+            {postData.map((item: PostType) => { return <li key={item.post.id}><Post post={item.post} username={item.username} tags={item.tags}/></li> })}
         </Stack>
     );
 }
