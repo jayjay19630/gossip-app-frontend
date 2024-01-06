@@ -10,10 +10,13 @@ import { Loading } from './Loading/Loading';
 export const Forum = () => {
 
     const navigate = useNavigate();
-    const [postData, setPostData] = useState(null);
+    const [postData, setPostData] = useState([]);
+    const [tagData, setTagData] = useState([])
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+
+        //get all posts on mount
         fetch(`${URL_NAME}/posts`, {
             method: 'GET',
             headers: {
@@ -29,11 +32,26 @@ export const Forum = () => {
             })
             .then(data => {
                 setPostData(data);
-                console.log(data);
+            })
+        
+        //get all tags on mount
+        fetch(`${URL_NAME}/tags`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token') 
+            },
+        })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                setTagData(data);
             })
             .finally(() => setLoading(false));
     }, [])
 
+    //create loading screen while fetching
     if (loading) return (
         <>
             <Navbar onHomePage={false} onForumPage={true}/>
@@ -41,11 +59,12 @@ export const Forum = () => {
         </>
     );
 
+    //show all posts after fetching
     return (
-        <>
+        <div className='forum'>
             <Navbar onHomePage={false} onForumPage={true}/>
-            <SearchBar/>
+            <SearchBar tagData={tagData}/>
             <ForumContent postData={postData}/>
-        </>
+        </div>
     );
 }
