@@ -1,4 +1,4 @@
-import { Navbar } from "../../components/Navbar.tsx";
+import { Navbar } from "../../components/navbar/Navbar.tsx";
 import { HomeBody } from "./HomeBody/HomeBody.tsx";
 import { HomeHeader } from "./HomeHeader/HomeHeader"
 import { HomeSignup } from "./HomeSignup/HomeSignup"

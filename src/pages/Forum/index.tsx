@@ -1,4 +1,4 @@
-import { Navbar } from '../../components/Navbar';
+import { Navbar } from '../../components/navbar/Navbar';
 import { ForumContent } from './ForumContent/ForumContent';
 import { SearchBar } from './SearchBar/SearchBar';
 import './index.css'

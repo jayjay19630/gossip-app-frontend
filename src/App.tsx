@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Signup } from './pages/Signup';
 import { Login } from './pages/Login';
 import { Forum } from './pages/Forum';
+import { Create } from './pages/Create';
 
 function App() {
   
@@ -31,6 +32,7 @@ function App() {
       <Route path='/signup' element={<ThemeProvider theme={theme}><Signup/></ThemeProvider>}/>
       <Route path='/login' element={<ThemeProvider theme={theme}><Login/></ThemeProvider>}/>
       <Route path='/posts' element={<ThemeProvider theme={theme}><Forum/></ThemeProvider>}/>
+      <Route path='/create' element={<ThemeProvider theme={theme}><Create/></ThemeProvider>}/>
     </Routes>
   );
 }

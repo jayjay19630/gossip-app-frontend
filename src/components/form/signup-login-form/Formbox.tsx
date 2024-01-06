@@ -1,7 +1,7 @@
 import './formbox.css'
 import { useForm } from "react-hook-form";
 import { Button, Stack, TextField } from "@mui/material";
-import { URL_NAME } from '../../data/url'
+import { URL_NAME } from '../../../data/url'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 

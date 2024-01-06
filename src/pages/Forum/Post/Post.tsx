@@ -1,6 +1,6 @@
 import { Card, CardActionArea, CardActions, CardContent, IconButton, Typography } from '@mui/material';
 import './Post.css'
-import { CenterFocusStrong, Favorite, Person } from '@mui/icons-material';
+import { Favorite } from '@mui/icons-material';
 
 type PostType = {
     post: {id: number, title: string, content: string, likes: number, user_id: number, created_at: string, updated_at: string},
