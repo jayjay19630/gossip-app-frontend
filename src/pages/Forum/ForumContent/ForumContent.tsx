@@ -1,48 +1,18 @@
-import { useEffect, useState } from "react";
-import { URL_NAME } from "../../../data/url";
-import { useNavigate } from "react-router-dom";
 import { Post } from "../Post/Post";
 import { Stack } from "@mui/material";
-import { Loading } from "../Loading/Loading";
 
-type PostType = {
+interface PostType {
     post: {id: number, title: string, content: string, likes: number, user_id: number, created_at: string, updated_at: string},
     username: string
     tags: number[]
 }
 
-export const ForumContent = () => {
+type PostArray = PostType[]
 
-    const navigate = useNavigate();
-    const [postData, setPostData] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        fetch(`${URL_NAME}/posts`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('token') 
-            },
-        })
-            .then(response => {
-                if (response.status===401) {
-                    navigate('/login');
-                }
-                return response.json();
-            })
-            .then(data => {
-                setPostData(data);
-                console.log(data);
-            })
-            .finally(() => setLoading(false));
-    }, [])
-
-    if (loading) return <Loading/>
-
+export const ForumContent = (props: { postData: PostArray }) => {
     return (
         <Stack spacing={0.1} alignItems={"center"}>
-            {postData.map((item: PostType) => { return <li key={item.post.id}><Post post={item.post} username={item.username} tags={item.tags}/></li> })}
+            {props.postData.map((item: PostType) => { return <li key={item.post.id}><Post post={item.post} username={item.username} tags={item.tags}/></li> })}
         </Stack>
     );
 }
