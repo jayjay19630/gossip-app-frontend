@@ -4,7 +4,7 @@ import { Stack } from "@mui/material";
 interface PostType {
     post: {id: number, title: string, content: string, likes: number, user_id: number, created_at: string, updated_at: string},
     username: string
-    tags: number[]
+    tags: string[]
 }
 
 type PostArray = PostType[]

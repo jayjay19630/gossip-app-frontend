@@ -13,8 +13,8 @@ type TagArray = TagType[];
 export const SearchBar = (props: {tagData: TagArray}) => {
     return (
         <div className="tag-list">
-            <Stack direction="row" spacing={0.6} sx={{ width: 700, flexWrap: "wrap"}}>
-                {props.tagData.map(tag => <li key={tag.id}><Tag tagname={tag.tag_name} clickable={true}/></li>)}
+            <Stack direction="row" sx={{ width: 710, flexWrap: "wrap"}}>
+                {props.tagData.map(tag => <li key={tag.id}><Tag tagname={tag.tag_name} clickable={true} onPost={false}/></li>)}
             </Stack>
         </div>
     );
