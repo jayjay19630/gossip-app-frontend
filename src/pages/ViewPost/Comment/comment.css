@@ -1,0 +1,21 @@
+.comment {
+    padding: 12px;
+    }
+
+    .comment-header {
+        font-size: 14px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+
+    .comment-body {
+        margin-bottom: 5px;
+        margin-left: 25px;
+        font-size: 12px;
+    }
+
+    .comment-footer {
+        font-size: 10px;
+        margin-left: 25px;
+    }

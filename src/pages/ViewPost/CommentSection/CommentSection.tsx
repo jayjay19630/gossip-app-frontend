@@ -1,23 +1,25 @@
+import { Comment } from '../Comment/Comment';
 import './commentsection.css';
 
-interface Comment {
+interface CommentType {
     id: number,
     content: string,
-    post_id: number,
-    user_id: number,
+    username: string,
     created_at: string,
-    updated_at: string
 }
 
 type CommentsType = {
-    comments: Comment[]
+    comments: CommentType[]
 }
 
 
 export const CommentSection = (props: CommentsType) => {
+
+    const comments = props.comments
+
     return (
         <div>
-            <h3>Comments</h3>
+            {comments.map(comment => <Comment key={comment.id} content={comment.content} username={comment.username} created_at={comment.created_at}></Comment>)}
         </div>
     )
 }

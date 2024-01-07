@@ -1,4 +1,4 @@
-import { Card, CardActions, CardContent, Typography } from '@mui/material'
+import { Card, CardActions, CardContent, Divider, Typography } from '@mui/material'
 import './post.css'
 import { CommentSection } from '../CommentSection/CommentSection'
 import { Tag } from '../../../components/tags/tag'
@@ -6,10 +6,8 @@ import { Tag } from '../../../components/tags/tag'
 interface Comment {
     id: number,
     content: string,
-    post_id: number,
-    user_id: number,
+    username: string
     created_at: string,
-    updated_at: string
 }
 
 type PostType = {
@@ -50,8 +48,10 @@ export const ViewPost = (props: PostType ) => {
                     <Typography sx={{fontSize: 15}}>
                         {content} 
                     </Typography>
-                    <CommentSection comments={commentsArr}/>
+                    
                 </CardContent>
+                <Divider></Divider>
+                <CommentSection comments={commentsArr}/>
                 
             </Card>
         </div>
