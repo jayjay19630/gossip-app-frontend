@@ -2,6 +2,7 @@ import { Card, CardActionArea, CardContent, Typography, CardActions, IconButton 
 import './homebody.css'
 import { Favorite } from '@mui/icons-material'
 import { useTypewriter, Cursor } from 'react-simple-typewriter';
+import { Tag } from '../../../components/tags/tag';
 
 export const HomeBody = () => {
 
@@ -46,6 +47,8 @@ export const HomeBody = () => {
                         <Typography sx={{fontSize: 16}}>
                                 {"155 Likes"} 
                         </Typography>
+                        <Tag tagname={'NUS'} clickable={false} onPost={true}></Tag>
+                        <Tag tagname={'Computer Science'} clickable={false} onPost={true}></Tag>
                     </CardActions>
                 </Card>
             </div>

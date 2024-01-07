@@ -6,7 +6,8 @@ import { Routes, Route } from 'react-router-dom';
 import { Signup } from './pages/Signup';
 import { Login } from './pages/Login';
 import { Forum } from './pages/Forum';
-import { Create } from './pages/Create';
+import { Create } from './pages/CreatePost';
+import { View } from './pages/ViewPost';
 
 function App() {
   
@@ -29,10 +30,13 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<ThemeProvider theme={theme}><Home/></ThemeProvider>}/>
-      <Route path='/signup' element={<ThemeProvider theme={theme}><Signup/></ThemeProvider>}/>
-      <Route path='/login' element={<ThemeProvider theme={theme}><Login/></ThemeProvider>}/>
-      <Route path='/posts' element={<ThemeProvider theme={theme}><Forum/></ThemeProvider>}/>
-      <Route path='/create' element={<ThemeProvider theme={theme}><Create/></ThemeProvider>}/>
+      <Route path='signup' element={<ThemeProvider theme={theme}><Signup/></ThemeProvider>}/>
+      <Route path='login' element={<ThemeProvider theme={theme}><Login/></ThemeProvider>}/>
+      <Route path='posts'>
+        <Route path='new' element={<ThemeProvider theme={theme}><Create/></ThemeProvider>}/>
+        <Route path=':postId' element={<ThemeProvider theme={theme}><View/></ThemeProvider>}/>
+        <Route path='' element={<ThemeProvider theme={theme}><Forum/></ThemeProvider>}/>
+      </Route>
     </Routes>
   );
 }

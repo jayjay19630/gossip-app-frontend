@@ -1,7 +1,8 @@
-import { Card, CardActionArea, CardActions, CardContent, CardHeader, IconButton, Stack, Typography } from '@mui/material';
+import { Card, CardActionArea, CardActions, CardContent, IconButton, Typography } from '@mui/material';
 import './Post.css'
 import { Favorite } from '@mui/icons-material';
 import { Tag } from '../../../components/tags/tag';
+import { useNavigate } from 'react-router-dom';
 
 type PostType = {
     post: {id: number, title: string, content: string, likes: number, user_id: number, created_at: string, updated_at: string},
@@ -20,11 +21,14 @@ export const Post = (props: PostType) => {
 
     const username = props.username;
     const likes = props.post.likes;
-    const tags = props.tags
+    const tags = props.tags;
+    const post_id  = props.post.id.toString();
+
+    const navigate = useNavigate();
 
     return (
         <Card sx={{ width: 700 }} key={props.post.id}>
-            <CardActionArea disableRipple sx={{backgroundColor: "#f0f0f0"}}>
+            <CardActionArea disableRipple sx={{backgroundColor: "#f0f0f0"}} onClick={() => navigate(post_id)}>
                 <CardContent>
                     <Typography sx={{fontSize: 15, fontWeight: 550}} component="div">
                         {props.post.title}
@@ -39,7 +43,7 @@ export const Post = (props: PostType) => {
                         {"Last updated " + date} 
                     </Typography>
                 </CardContent>
-            </CardActionArea>
+            </CardActionArea>            
             <CardActions disableSpacing sx={{height: 25}}>
                 <IconButton aria-label="add to favorites">
                     <Favorite/>
@@ -47,7 +51,7 @@ export const Post = (props: PostType) => {
                 <Typography sx={{fontSize: 12}}>
                         {likes + " Likes"} 
                 </Typography>
-                {tags.map(tag => <Tag tagname={tag} clickable={false} onPost={true}></Tag>)}
+                {tags.map(tag => <Tag key={tag} tagname={tag} clickable={false} onPost={true}></Tag>)}
             </CardActions>
         </Card>
     );
