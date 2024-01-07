@@ -43,7 +43,7 @@ export const Formbox = (props: {state :string}) => {
             })
             .then((data) => {
                 console.log(data)
-                localStorage.setItem('user', data.user.username);
+                localStorage.setItem('username', data.user.username);
                 localStorage.setItem('user_id', data.user.id);
                 localStorage.setItem('token', data.token);
                 navigate('/posts');
