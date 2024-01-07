@@ -3,8 +3,11 @@ import './Navbar.css'
 import { Person } from '@mui/icons-material';
 
 export const Navbar = (props: { onHomePage: boolean, onForumPage: boolean }) => {
+
+
+
     return (
-        <div className="navbar">
+        <div className="navbar" style={{ backgroundColor: props.onHomePage ? '#f7c516' : '#FFC000'}}>
             <div className='logo-text'><img src='/src/assets/images/grape.png' alt='error'></img> grapevine</div>
             {props.onHomePage && 
             <ul className='links'>
