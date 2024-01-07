@@ -21,7 +21,7 @@ export const CommentSection = (props: CommentsType) => {
     const postid = props.postid;
 
     return (
-        <div>
+        <div className='comment-section'>
             <CreateComment postid={postid}/>
             {comments.map(comment => <Comment key={comment.id} content={comment.content} username={comment.username} created_at={comment.created_at}></Comment>)}
         </div>
