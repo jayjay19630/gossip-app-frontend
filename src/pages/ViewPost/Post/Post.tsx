@@ -28,6 +28,7 @@ export const ViewPost = (props: PostType ) => {
     const title = props.post.title;
     const username = props.username;
     const tags = props.tags;
+    const postid = props.post.id
 
     const commentsArr = props.comments;
 
@@ -51,7 +52,7 @@ export const ViewPost = (props: PostType ) => {
                     
                 </CardContent>
                 <Divider></Divider>
-                <CommentSection comments={commentsArr}/>
+                <CommentSection comments={commentsArr} postid={postid}/>
                 
             </Card>
         </div>

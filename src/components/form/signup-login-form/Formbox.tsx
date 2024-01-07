@@ -42,7 +42,9 @@ export const Formbox = (props: {state :string}) => {
                 return response.json();
             })
             .then((data) => {
-                localStorage.setItem('username', data.user.username);
+                console.log(data)
+                localStorage.setItem('user', data.user.username);
+                localStorage.setItem('user_id', data.user.id);
                 localStorage.setItem('token', data.token);
                 navigate('/posts');
             })
@@ -67,6 +69,7 @@ export const Formbox = (props: {state :string}) => {
             })
             .then((data) => {
                 localStorage.setItem('username', data.user.username);
+                localStorage.setItem('user_id', data.user.id);
                 localStorage.setItem('token', data.token);
                 navigate('/posts');
             })

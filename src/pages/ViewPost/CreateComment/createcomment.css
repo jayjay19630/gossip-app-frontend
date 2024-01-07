@@ -1,0 +1,16 @@
+.create-comment {
+    padding-left: 25px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    }
+
+    .comment-header {
+        font-size: 10px;
+        font-weight: 200;
+        margin-bottom: 10px;
+    }
+
+    .comment-button {
+        justify-content: end;
+    }

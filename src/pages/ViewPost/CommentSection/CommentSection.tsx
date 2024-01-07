@@ -1,4 +1,4 @@
-import { CreateComment } from '../AddComment/AddComment';
+import { CreateComment } from '../CreateComment/CreateComment';
 import { Comment } from '../Comment/Comment';
 import './commentsection.css';
 
@@ -10,17 +10,19 @@ interface CommentType {
 }
 
 type CommentsType = {
-    comments: CommentType[]
+    comments: CommentType[],
+    postid: number
 }
 
 
 export const CommentSection = (props: CommentsType) => {
 
     const comments = props.comments
+    const postid = props.postid;
 
     return (
         <div>
-            <CreateComment/>
+            <CreateComment postid={postid}/>
             {comments.map(comment => <Comment key={comment.id} content={comment.content} username={comment.username} created_at={comment.created_at}></Comment>)}
         </div>
     )
