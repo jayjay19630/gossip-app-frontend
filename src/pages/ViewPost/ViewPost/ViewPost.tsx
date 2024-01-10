@@ -6,8 +6,10 @@ import { Tag } from '../../../components/tags/tag'
 interface Comment {
     id: number,
     content: string,
-    username: string
+    post_id: number,
+    user_id: number,
     created_at: string,
+    updated_at: string
 }
 
 type PostType = {

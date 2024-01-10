@@ -11,7 +11,6 @@ export const Create = () => {
                 <PostForm></PostForm>
                 </Card>
             </div>
-            
         </Stack>
     )
 }

@@ -2,7 +2,7 @@ import { CreateComment } from '../CreateComment/CreateComment';
 import { Comment } from '../Comment/Comment';
 import './commentsection.css';
 
-interface CommentType {
+interface Comment {
     id: number,
     content: string,
     username: string,
@@ -10,14 +10,14 @@ interface CommentType {
 }
 
 type CommentsType = {
-    comments: CommentType[],
+    comments: Comment[],
     postid: number
 }
 
 
 export const CommentSection = (props: CommentsType) => {
 
-    const comments = props.comments
+    const comments = props.comments;
     const postid = props.postid;
     const numberOfComments = comments.length
 

@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import { URL_NAME } from "../data/url";
 
+interface TagType {
+    id: number,
+    tag_name: string,
+    created_at: string,
+    updated_at: string
+};
+type TagArray = TagType[];
+
 export const useTagData = () => {
     const [tagData, setTagData] = useState([])
     useEffect(() => {

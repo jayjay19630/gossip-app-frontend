@@ -11,7 +11,7 @@ type PostArray = PostType[]
 
 export const ForumContent = (props: { postData: PostArray }) => {
     return (
-        <Stack spacing={0.1} alignItems={"center"}>
+        <Stack spacing={2} alignItems={"center"}>
             {props.postData.map((item: PostType) => { return <li key={item.post.id}><Post post={item.post} username={item.username} tags={item.tags}/></li> })}
         </Stack>
     );
