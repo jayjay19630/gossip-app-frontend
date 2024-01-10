@@ -101,4 +101,3 @@ export const Formbox = (props: {state :string}) => {
         </form>
     );
 }
-
