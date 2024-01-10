@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Stack } from "@mui/system";
 import { Button, TextField } from "@mui/material";
 import './postform.css';
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { TagList } from "../../taglist/TagList";
 
 type FormValues = {
     title: string;
@@ -22,24 +23,9 @@ export const PostForm = () => {
 
     const navigate = useNavigate();
     const { register, handleSubmit, formState } = form;
-    const [tagData, setTagData] = useState([])
     const { errors } = formState;
-
-    useEffect(() => {
-        fetch(`${URL_NAME}/tags`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('token') 
-            },
-        })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                setTagData(data);
-            })
-    }, [])
+    const [ toggledTagsArr, setToggledTagsArr ] = useState([]);
+    console.log(toggledTagsArr);
 
     const PostSubmit = (data: FormValues) => {
         fetch(`${URL_NAME}/posts`, {
@@ -53,6 +39,7 @@ export const PostForm = () => {
                     title: data.title,
                     content: data.content,
                     user_id: localStorage.getItem('user_id'),
+                    tag_ids: toggledTagsArr,
                     likes: 0
                 }
             })
@@ -64,6 +51,7 @@ export const PostForm = () => {
                 navigate("/posts")
             })
     }
+    
 
     return (
         <form className="create-post" onSubmit={handleSubmit(PostSubmit)} noValidate>
@@ -91,7 +79,8 @@ export const PostForm = () => {
                     multiline
                     rows={6}
                 />
-                <h5>Choose relevant tags</h5>
+                <h4 className="choose-tag-name">Choose relevant tags</h4>
+                <TagList passChildData={setToggledTagsArr} tagsArr={toggledTagsArr}/>
                 <Button className="post-button" type="submit" sx={{backgroundColor: "orange", color: "black", fontSize: 10, borderRadius: 12, width: 50, alignSelf: 'end' }}>Post</Button>
             </Stack>
         </form>

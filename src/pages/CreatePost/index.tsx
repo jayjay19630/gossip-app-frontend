@@ -8,7 +8,7 @@ export const Create = () => {
             <Navbar onForumPage={true} onHomePage={false}/>
             <div className='body'>
                 <Card sx={{ width: 900 }}>
-                <PostForm></PostForm>
+                    <PostForm/>
                 </Card>
             </div>
         </Stack>

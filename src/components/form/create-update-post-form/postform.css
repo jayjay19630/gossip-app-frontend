@@ -9,3 +9,7 @@
     li {
         list-style-type: none;
     }
+
+    .choose-tag-name {
+        padding-left: 10px;
+    }
