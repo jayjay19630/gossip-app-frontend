@@ -8,6 +8,7 @@ import { usePosts } from '../../utils/usePosts';
 export const Forum = () => {
 
     const {postData, loading} = usePosts();
+    const orderedPostData = postData.slice(0).reverse();
 
     //create loading screen while fetching
     if (loading) return (
@@ -22,7 +23,7 @@ export const Forum = () => {
         <div className='forum'>
             <Navbar onHomePage={false} onForumPage={true}/>
             <SearchBar/>
-            <ForumContent postData={postData}/>
+            <ForumContent postData={orderedPostData}/>
         </div>
     );
 }
