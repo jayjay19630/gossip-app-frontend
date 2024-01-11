@@ -1,4 +1,4 @@
-import './homebody.css'
+import './HomeBody.css'
 import { Tag } from '../../../components/tags/Tag';
 
 //ui components and icons from mui library

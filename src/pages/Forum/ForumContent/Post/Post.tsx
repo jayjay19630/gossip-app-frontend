@@ -1,70 +1,57 @@
-import { Card, CardActionArea, CardActions, CardContent, IconButton, Typography } from '@mui/material';
 import './Post.css'
+
+//import ui and icons from mui library
+import { Card, CardActionArea, CardActions, CardContent, IconButton, Typography } from '@mui/material';
 import { Favorite } from '@mui/icons-material';
-import { Tag } from '../../../components/tags/tag';
+
+//import state and navigate from react packages
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { URL_NAME } from '../../../data/url';
 
-type PostType = {
-    post: {id: number, title: string, content: string, user_id: number, created_at: string, updated_at: string},
-    username: string,
-    tags: string[],
-    likes: number
-    liked_by_user: boolean
-}
-const wordlimit = 115;
+//import relevant components, types and util functions
+import { Tag } from '../../../../components/tags/Tag';
+import { PostType } from '../../../../data/PostType';
+import { incrementLike } from '../../../../utils/incrementLike';
+import { decrementLike } from '../../../../utils/decrementLike';
 
+//Post component on forum page showing shortened version of content with title, tags and like feature
 export const Post = (props: PostType) => {
 
-    const content = props.post.content;
-    const shortenedContent = content.length > wordlimit ? content.substring(0, wordlimit) + "..." : content;
-
-    const dateObject = new Date(props.post.updated_at)
-    const date = dateObject.toDateString();
-
+    //extracting post author, tags and post id from props data
     const username = props.username;
-    const [ likes, setLikes ] = useState(props.likes);
-    const liked_by_user = props.liked_by_user;
     const tags = props.tags;
     const post_id  = props.post.id
 
+    //extracting content from props data with word limit
+    const content = props.post.content;
+    const wordlimit = 115;
+    const shortenedContent = content.length > wordlimit ? content.substring(0, wordlimit) + "..." : content;
+
+    //extracting data from props data
+    const dateObject = new Date(props.post.updated_at)
+    const date = dateObject.toDateString();
+
+    //extracting number of likes into state and whether user has liked post
+    const [ likes, setLikes ] = useState(props.likes);
+    const liked_by_user = props.liked_by_user;
+    
+    //creating state for when post is liked. create handlelike button to handle incrementing/decrementing likes on post
     const [selected, setSelected] = useState(liked_by_user);
     const handleLike = () => {
         setSelected(!selected);
         if (!selected) {
-            fetch(`${URL_NAME}/posts/${post_id}/increment`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + localStorage.getItem('token') 
-                },
-            })
-                .then(response => {
-                    if (response.status===401) {
-                        navigate('/login');
-                    }
-                })
-        setLikes(likes + 1);
+            incrementLike(post_id);
+            setLikes(likes + 1);
         } else {
-            fetch(`${URL_NAME}/posts/${post_id}/decrement`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + localStorage.getItem('token') 
-                },
-            })
-                .then(response => {
-                    if (response.status===401) {
-                        navigate('/login');
-                    }
-                })
+            decrementLike(post_id);
             setLikes(likes - 1);
         } 
     }
 
+    //navigate function for when user clicks on the post
     const navigate = useNavigate();
 
+    //post component that directs user to view specific post when clicked. 
     return (
         <Card sx={{ width: 700 }} key={post_id}>
             <CardActionArea disableRipple sx={{backgroundColor: "#f0f0f0"}} onClick={() => navigate(post_id.toString())}>
@@ -90,7 +77,7 @@ export const Post = (props: PostType) => {
                 <Typography sx={{fontSize: 12}}>
                         {likes + " Likes"} 
                 </Typography>
-                {tags.map(tag => <Tag key={tag} tagname={tag} clickable={false} onPost={true}></Tag>)}
+                {tags.map(tag => <Tag key={tag} tagname={tag} clickable={false} id={tag} tagsArr={[]} passChildData={undefined}></Tag>)}
             </CardActions>
         </Card>
     );

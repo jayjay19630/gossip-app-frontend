@@ -1,7 +1,8 @@
 import { Card, CardActionArea, Typography } from "@mui/material"
 import { useState } from "react"
+import { TagType } from "../../data/TagType";
 
-export const Tag = (props: {id: number, tagname: string, clickable: boolean, tagsArr: number[], passChildData: Function | undefined}) => {
+export const Tag = (props: TagType) => {
 
     const setToggledTagsArr = props.passChildData;
     const toggledTagsArr = props.tagsArr;
@@ -30,7 +31,7 @@ export const Tag = (props: {id: number, tagname: string, clickable: boolean, tag
                 }}
                 disableRipple
             >
-                <Typography sx={{ fontSize: !props.clickable ? 12 : 14 , fontWeight: 'bold' }}>
+                <Typography sx={{ fontSize: 12, fontWeight: 'bold' }}>
                     {props.tagname}
                 </Typography>
             </CardActionArea>

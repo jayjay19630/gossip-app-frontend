@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
-import { Navbar } from "../../components/navbar/Navbar";
+import { Navbar } from "../../components/Navbar/Navbar";
 import { ViewPost } from "./ViewPost/ViewPost";
-import { Loading } from "../Forum/Loading/Loading";
+import { Loading } from "../../components/Loading/Loading";
 import { usePostById } from "../../utils/usePostById";
 
 export const View = () => {

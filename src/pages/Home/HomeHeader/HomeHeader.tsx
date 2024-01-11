@@ -1,4 +1,4 @@
-import "./homeheader.css"
+import "./HomeHeader.css"
 
 //home header section with catchy headline
 export const HomeHeader = () => {

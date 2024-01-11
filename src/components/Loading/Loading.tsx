@@ -1,5 +1,6 @@
 import './Loading.css'
 
+//loading component with loading gif
 export const Loading = () => {
     return (
         <div className='loading-screen'>

@@ -25,7 +25,6 @@ export const PostForm = () => {
     const { register, handleSubmit, formState } = form;
     const { errors } = formState;
     const [ toggledTagsArr, setToggledTagsArr ] = useState([]);
-    console.log(toggledTagsArr);
 
     const PostSubmit = (data: FormValues) => {
         fetch(`${URL_NAME}/posts`, {
@@ -40,7 +39,6 @@ export const PostForm = () => {
                     content: data.content,
                     user_id: localStorage.getItem('user_id'),
                     tag_ids: toggledTagsArr,
-                    likes: 0
                 }
             })
         })

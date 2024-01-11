@@ -1,5 +1,5 @@
 import { Card, Stack } from '@mui/material'
-import { Navbar } from '../../components/navbar/Navbar'
+import { Navbar } from '../../components/Navbar/Navbar'
 import { PostForm } from '../../components/form/create-update-post-form/PostForm'
 
 export const Create = () => {
