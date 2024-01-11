@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { UIButton } from '../../../components/ui/UIButton'
 import './homesignup.css'
 
+//signup component with link to signup page
 export const HomeSignup = () => {
     return (
         <div className="home-signup">

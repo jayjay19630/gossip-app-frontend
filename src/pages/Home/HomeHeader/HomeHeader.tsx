@@ -1,5 +1,6 @@
 import "./homeheader.css"
 
+//home header section with catchy headline
 export const HomeHeader = () => {
     return (
         <div className="home-header">

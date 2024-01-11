@@ -42,7 +42,7 @@ export const ViewPost = (props: PostType ) => {
                     <Typography sx={{fontSize: 24, fontWeight: 550}}>
                         {title} 
                     </Typography>   
-                    {tags.map(tag => <Tag key={tag} tagname={tag} clickable={false} onPost={true}></Tag>)}
+                    {tags.map(tag => <Tag key={tag} tagname={tag} clickable={false}></Tag>)}
                 </CardActions>
                 <CardContent sx={{paddingTop: 0}}>   
                     <Typography sx={{fontSize: 12, color: 'gray'}} gutterBottom>
