@@ -1,14 +1,17 @@
-import { Card, CardActionArea, CardActions, CardContent, IconButton, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
+import { Card, CardActionArea, CardActions, CardContent, IconButton, Typography } from '@mui/material';
 import './Post.css'
 import { Favorite } from '@mui/icons-material';
 import { Tag } from '../../../components/tags/tag';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { URL_NAME } from '../../../data/url';
 
 type PostType = {
-    post: {id: number, title: string, content: string, likes: number, user_id: number, created_at: string, updated_at: string},
-    username: string
-    tags: string[]
+    post: {id: number, title: string, content: string, user_id: number, created_at: string, updated_at: string},
+    username: string,
+    tags: string[],
+    likes: number
+    liked_by_user: boolean
 }
 const wordlimit = 115;
 
@@ -21,20 +24,50 @@ export const Post = (props: PostType) => {
     const date = dateObject.toDateString();
 
     const username = props.username;
-    const likes = props.post.likes;
+    const [ likes, setLikes ] = useState(props.likes);
+    const liked_by_user = props.liked_by_user;
     const tags = props.tags;
-    const post_id  = props.post.id.toString();
+    const post_id  = props.post.id
 
-    const [selected, setSelected] = useState(false);
+    const [selected, setSelected] = useState(liked_by_user);
     const handleLike = () => {
         setSelected(!selected);
+        if (!selected) {
+            fetch(`${URL_NAME}/posts/${post_id}/increment`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token') 
+                },
+            })
+                .then(response => {
+                    if (response.status===401) {
+                        navigate('/login');
+                    }
+                })
+        setLikes(likes + 1);
+        } else {
+            fetch(`${URL_NAME}/posts/${post_id}/decrement`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token') 
+                },
+            })
+                .then(response => {
+                    if (response.status===401) {
+                        navigate('/login');
+                    }
+                })
+            setLikes(likes - 1);
+        } 
     }
 
     const navigate = useNavigate();
 
     return (
-        <Card sx={{ width: 700 }} key={props.post.id}>
-            <CardActionArea disableRipple sx={{backgroundColor: "#f0f0f0"}} onClick={() => navigate(post_id)}>
+        <Card sx={{ width: 700 }} key={post_id}>
+            <CardActionArea disableRipple sx={{backgroundColor: "#f0f0f0"}} onClick={() => navigate(post_id.toString())}>
                 <CardContent>
                     <Typography sx={{fontSize: 15, fontWeight: 550}} component="div">
                         {props.post.title}
