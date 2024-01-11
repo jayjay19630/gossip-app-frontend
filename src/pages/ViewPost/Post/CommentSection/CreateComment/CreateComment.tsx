@@ -1,47 +1,32 @@
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { URL_NAME } from "../../../data/url";
-import { Button, Stack, TextField } from "@mui/material";
 import './createcomment.css'
 
-type FormValues = {
-    content: string
-}
+//import reacthookform library, router library and mui components
+import { useForm } from "react-hook-form";
+import { Button, Stack, TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
+//import relevant utils
+import { postComment } from "../../../../../utils/postComment";
+
+//component that allows users to create comments
 export const CreateComment = (props: {postid: number}) => {
 
+    //navigate function to refresh page once comment is submitted
+    const navigate = useNavigate();
+
+    //use react hook form library to create form
     const form = useForm({
         defaultValues: {
             content: ""
         }
     })
-
     const { register, handleSubmit, formState } = form;
     const { errors } = formState;
-    const navigate = useNavigate();
-
-    //fetch method for creating comment
-    const onSubmit = (data: FormValues) => {
-        fetch(`${URL_NAME}/posts/${props.postid}/comments`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('token')
-            },
-            body: JSON.stringify({
-                comment: {
-                    content: data.content, 
-                    user_id: localStorage.getItem('user_id'),
-                    post_id: props.postid
-                }
-            })
-        })
-            .then((response) => {
-                return response.json();
-            })
-            .then(() => {
-                navigate(0);
-            })
+   
+    //onSubmit function to send data in form and refresh page
+    const onSubmit = (data: { content: string }) => {
+        postComment(data.content, props.postid)
+        navigate(0);
     }
 
     return (

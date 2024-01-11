@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { URL_NAME } from "../data/url";
 import { useNavigate } from "react-router-dom";
 
-export const usePostById = (postId: number) => {
+export const usePostById = (postId: string | undefined) => {
 
     //navigate function for when user is not authenticated by JWT
     const navigate = useNavigate();

@@ -1,14 +1,21 @@
+//import useparams to detect post id
 import { useParams } from "react-router-dom"
+
+//import relevant util functions and components
 import { Navbar } from "../../components/Navbar/Navbar";
-import { ViewPost } from "./ViewPost/ViewPost";
+import { Post } from "./Post/Post";
 import { Loading } from "../../components/Loading/Loading";
 import { usePostById } from "../../utils/usePostById";
+import { PostByIdType } from "../../data/PostType";
 
+//view component which shows an individual post with a comment section
 export const View = () => {
 
-    const { postId } = useParams();
-    const { postData, loading } = usePostById(postId);
+    //extracting post id and post data
+    let { postId } = useParams();
+    let { postData, loading } = usePostById(postId) as { postData: PostByIdType | undefined, loading: boolean };
 
+    //rendering component depending on loading state
     if (loading) return (
         <>
             <Navbar onHomePage={false} onForumPage={true}/>
@@ -16,10 +23,13 @@ export const View = () => {
         </>
     );
 
+    //asserting that postData will be of posttype after fetching
+    postData = postData as PostByIdType;
+
     return (
         <>
             <Navbar onHomePage={false} onForumPage={true}/>
-            <ViewPost post={postData.post} username={postData.username} tags={postData.tags} comments={postData.comments}/>
+            <Post post={postData.post} username={postData.username} tags={postData.tags} comments={postData.comments}/>
         </>
     );
 }

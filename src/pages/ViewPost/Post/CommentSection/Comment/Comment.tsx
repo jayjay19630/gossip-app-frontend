@@ -1,14 +1,14 @@
-import { Person } from "@mui/icons-material";
 import './comment.css'
 
-type Comment = {
-    content: string,
-    username: string,
-    created_at: string,
-}
+//import mui icon
+import { Person } from "@mui/icons-material";
 
-export const Comment = (props: Comment) => {
+//import relevant comment type
+import { CommentType } from "../../../../../data/CommentType";
 
+export const Comment = (props: CommentType) => {
+
+    //extract username, content and date of comment
     const username = props.username
     const content = props.content
     const dateObject = new Date(props.created_at)
