@@ -2,10 +2,17 @@ import { useEffect, useState } from "react";
 import { URL_NAME } from "../data/url";
 import { useNavigate } from "react-router-dom";
 
+//custom hook for getting all posts
 export const usePosts = () => {
+
+    //store posts and loading state in useState hooks
     const [postData, setPostData] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    //navigate function for when user is not authenticated
     const navigate = useNavigate();
+
+    //fetching on mount
     useEffect(() => {
         fetch(`${URL_NAME}/posts`, {
             method: 'GET',
@@ -25,5 +32,6 @@ export const usePosts = () => {
             })
             .finally(() => setLoading(false))
     }, []);
+    
     return { postData, loading };
 }

@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import { URL_NAME } from "../data/url";
 
-interface TagType {
-    id: number,
-    tag_name: string,
-    created_at: string,
-    updated_at: string
-};
-type TagArray = TagType[];
-
+//custom hook for fetching all tags
 export const useTagData = () => {
+
+    //store tags in a state on mount
     const [tagData, setTagData] = useState([])
+
+    //fetching on mount
     useEffect(() => {
+
         fetch(`${URL_NAME}/tags`, {
             method: 'GET',
             headers: {
@@ -25,6 +23,8 @@ export const useTagData = () => {
             .then(data => {
                 setTagData(data);
             })
+
     }, []);
+    
     return tagData;
 }
