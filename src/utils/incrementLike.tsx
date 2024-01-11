@@ -2,7 +2,7 @@ import { URL_NAME } from "../data/url";
 
 export const incrementLike = (post_id: number) => {
 
-    fetch(`${URL_NAME}/posts/${post_id}/increment`, {
+    return fetch(`${URL_NAME}/posts/${post_id}/increment`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

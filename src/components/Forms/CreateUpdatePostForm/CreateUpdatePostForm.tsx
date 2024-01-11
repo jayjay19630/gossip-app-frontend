@@ -52,7 +52,7 @@ export const CreateUpdatePostForm = () => {
     
 
     return (
-        <form className="create-post" onSubmit={handleSubmit(PostSubmit)} noValidate>
+        <form className="create-update-post" onSubmit={handleSubmit(PostSubmit)} noValidate>
             <Stack spacing={2} width={845}>
                 <h1>Create New Post</h1>
                 <TextField

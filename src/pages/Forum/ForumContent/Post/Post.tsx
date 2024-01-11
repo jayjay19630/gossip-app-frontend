@@ -40,11 +40,9 @@ export const Post = (props: PostType) => {
     const handleLike = () => {
         setSelected(!selected);
         if (!selected) {
-            incrementLike(post_id);
-            setLikes(likes + 1);
+            incrementLike(post_id).then(() => setLikes(likes + 1));
         } else {
-            decrementLike(post_id);
-            setLikes(likes - 1);
+            decrementLike(post_id).then(() => setLikes(likes - 1));
         } 
     }
 
