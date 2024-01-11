@@ -1,4 +1,4 @@
-import './createcomment.css'
+import './createcommentform.css'
 
 //import reacthookform library, router library and mui components
 import { useForm } from "react-hook-form";
@@ -6,10 +6,10 @@ import { Button, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 //import relevant utils
-import { postComment } from "../../../../../utils/postComment";
+import { postComment } from "../../../utils/postComment";
 
 //component that allows users to create comments
-export const CreateComment = (props: {postid: number}) => {
+export const CreateCommentForm = (props: {postid: number}) => {
 
     //navigate function to refresh page once comment is submitted
     const navigate = useNavigate();
@@ -25,7 +25,7 @@ export const CreateComment = (props: {postid: number}) => {
    
     //onSubmit function to send data in form and refresh page
     const onSubmit = (data: { content: string }) => {
-        postComment(data.content, props.postid)
+        postComment(data.content, props.postid);
         navigate(0);
     }
 

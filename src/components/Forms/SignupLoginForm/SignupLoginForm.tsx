@@ -1,18 +1,17 @@
-import './formbox.css'
+import './SignupLoginForm.css'
+
+//import reacthookform library, router library, mui components and util functions
 import { useForm } from "react-hook-form";
 import { Button, Stack, TextField } from "@mui/material";
-import { URL_NAME } from '../../../data/url'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-//types for data received by form
-type FormValues = {
-    username: string;
-}
+import { postSignup } from '../../../utils/postSignup';
+import { postLogin } from '../../../utils/postLogin';
 
 //form component for both signup and login
-export const Formbox = (props: {state :string}) => {
+export const SignupLoginForm = (props: {state :string}) => {
 
+    //use react hook form library to create form
     const form = useForm({
         defaultValues: {
             username: ""
@@ -20,59 +19,21 @@ export const Formbox = (props: {state :string}) => {
     })
     const { register, handleSubmit, formState } = form;
     const { errors } = formState;
+
+    //create states for when usenrame is invalid or when username is already taken
     const [alreadyTakenError, setAlreadyTakenError] = useState(false);
     const [invalidUsernameError, setInvalidUsernameError] = useState(false);
+
+    //navigate function incase of user inauthentication
     const navigate = useNavigate();
 
-    //fetch post for signups
-    const onSignupSubmit = (data: FormValues) => {
-
-        //post username to backend and redirects to signup if already taken.
-        fetch(`${URL_NAME}/users`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then((response) => {
-                if (response.status === 422) {
-                    setAlreadyTakenError(true);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                console.log(data)
-                localStorage.setItem('username', data.user.username);
-                localStorage.setItem('user_id', data.user.id);
-                localStorage.setItem('token', data.token);
-                navigate('/posts');
-            })
+    //onsubmit functions for when signup or login form is submitted
+    const onSignupSubmit = (data: {username: string}) => {
+        postSignup(data.username, setAlreadyTakenError).then(() => navigate('/posts'));
     }
 
-    //fetch post for login
-    const onLoginSubmit = (data: FormValues) => {
-
-        //posts username to backend and redirects to login if it is not in database
-        fetch(`${URL_NAME}/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then((response) => {
-                if (response.status === 422) {
-                    setInvalidUsernameError(true);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                localStorage.setItem('username', data.user.username);
-                localStorage.setItem('user_id', data.user.id);
-                localStorage.setItem('token', data.token);
-                navigate('/posts');
-            })
+    const onLoginSubmit = (data: {username: string}) => {
+        postLogin(data.username, setInvalidUsernameError).then(() => navigate('/posts'));
     }
 
     //conditionally renders login and signup forms

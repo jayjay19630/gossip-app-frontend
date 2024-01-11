@@ -3,7 +3,7 @@ import { URL_NAME } from "../../../data/url";
 import { useNavigate } from "react-router-dom";
 import { Stack } from "@mui/system";
 import { Button, TextField } from "@mui/material";
-import './postform.css';
+import './createupdatepostform.css';
 import { useState } from "react";
 import { TagList } from "../../taglist/TagList";
 
@@ -12,7 +12,7 @@ type FormValues = {
     content: string;
 }
 
-export const PostForm = () => {
+export const CreateUpdatePostForm = () => {
 
     const form = useForm({
         defaultValues: {

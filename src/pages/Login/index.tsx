@@ -1,10 +1,10 @@
-import { Formbox } from '../../components/form/signup-login-form/Formbox';
+import { SignupLoginForm } from '../../components/Forms/SignupLoginForm/SignupLoginForm';
 import './index.css';
 
 export const Login = () => {
     return (
         <div className="login">
-            <Formbox state="login"></Formbox>
+            <SignupLoginForm state="login"/>
         </div>
     );
 }
