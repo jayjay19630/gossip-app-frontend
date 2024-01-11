@@ -1,8 +1,9 @@
-import { Card, CardActionArea, CardActions, CardContent, IconButton, Typography } from '@mui/material';
+import { Card, CardActionArea, CardActions, CardContent, IconButton, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import './Post.css'
 import { Favorite } from '@mui/icons-material';
 import { Tag } from '../../../components/tags/tag';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 type PostType = {
     post: {id: number, title: string, content: string, likes: number, user_id: number, created_at: string, updated_at: string},
@@ -23,6 +24,11 @@ export const Post = (props: PostType) => {
     const likes = props.post.likes;
     const tags = props.tags;
     const post_id  = props.post.id.toString();
+
+    const [selected, setSelected] = useState(false);
+    const handleLike = () => {
+        setSelected(!selected);
+    }
 
     const navigate = useNavigate();
 
@@ -45,9 +51,9 @@ export const Post = (props: PostType) => {
                 </CardContent>
             </CardActionArea>            
             <CardActions disableSpacing sx={{height: 25}}>
-                <IconButton aria-label="add to favorites">
-                    <Favorite/>
-                </IconButton>
+                <IconButton onClick={handleLike}>
+                    <Favorite sx={{ fill: selected ? 'red' : 'gray' }}></Favorite>
+                </IconButton>                    
                 <Typography sx={{fontSize: 12}}>
                         {likes + " Likes"} 
                 </Typography>
