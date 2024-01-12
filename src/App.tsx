@@ -9,6 +9,7 @@ import { Forum } from './pages/Forum';
 import { Create } from './pages/CreatePost';
 import { View } from './pages/ViewPost';
 import { Edit } from './pages/EditPost';
+import { Error } from './pages/Error/Error';
 
 function App() {
   
@@ -41,6 +42,7 @@ function App() {
         </Route>
         <Route path='' element={<ThemeProvider theme={theme}><Forum/></ThemeProvider>}/>
       </Route>
+      <Route path='error' element={<Error></Error>}></Route>
     </Routes>
   );
 }

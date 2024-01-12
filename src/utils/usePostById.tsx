@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { URL_NAME } from "../data/url";
 import { useNavigate } from "react-router-dom";
+import { PostByIdType } from "../data/PostType";
 
 export const usePostById = (postId: string | undefined, setDefaultTitle: Function | undefined, setDefaultContent: Function | undefined) => {
 
@@ -8,7 +9,7 @@ export const usePostById = (postId: string | undefined, setDefaultTitle: Functio
     const navigate = useNavigate();
 
     //store post and loading data in states
-    const [postData, setPostData] = useState();
+    const [postData, setPostData] = useState() as [PostByIdType, Function];
     const [loading, setLoading] = useState(true);
 
     //fetch hook for getting post by id
@@ -29,6 +30,9 @@ export const usePostById = (postId: string | undefined, setDefaultTitle: Functio
             .then(data => {
                 setPostData(data);
                 if (setDefaultContent !== undefined && setDefaultTitle !== undefined) {
+                    if (data.username !== localStorage.getItem('username')) {
+                        navigate('/error');
+                    }
                     setDefaultTitle(data.post.title);
                     setDefaultContent(data.post.content);
                 }
