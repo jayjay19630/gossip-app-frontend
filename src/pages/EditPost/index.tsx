@@ -12,7 +12,7 @@ export const Edit = () => {
             <Navbar onForumPage={true} onHomePage={false}/>
             <div className='body'>
                 <Card sx={{ width: 900 }}>
-                <   CreateUpdatePostForm state={"edit"} postId={postId}></CreateUpdatePostForm>
+                    <CreateUpdatePostForm state={"edit"} postId={postId}></CreateUpdatePostForm>
                 </Card>
             </div>
         </Stack>

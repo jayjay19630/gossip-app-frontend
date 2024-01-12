@@ -14,6 +14,7 @@ import { createPost } from "../../../utils/postPost";
 import { updatePost } from '../../../utils/updatePost';
 import { usePostById } from '../../../utils/usePostById';
 import { useNavigate } from 'react-router-dom';
+import { deletePost } from '../../../utils/deletePost';
 
 //form component for creating and updating posts
 export const CreateUpdatePostForm = (props: {state: string, postId: string | undefined}) => {
@@ -54,12 +55,21 @@ export const CreateUpdatePostForm = (props: {state: string, postId: string | und
         updatePost(data.title, data.content, toggledTagsArr, postIdStr).then(() => navigate('/posts'));
     }
 
+    //function open deleting post
+    const onDelete = (postId: string) => {
+        deletePost(postId).then(() => navigate('/posts'));
+    }
+
     //renders form component conditionally depending on whether 
     //the form state is an edit form or a create form
     return (
         <form className="create-update-post" onSubmit={handleSubmit(props.state === "create" ? onCreateSubmit : onEditSubmit)} noValidate>
             <Stack spacing={2} width={845}>
-                <h1>{props.state === "create" ? "Create New Post" : "Edit Post"}</h1>
+                <Stack direction={'row'} alignItems={'center'} spacing={2}>
+                    <h1>{props.state === "create" ? "Create New Post" : "Edit Post"}</h1>
+                    <Button sx={{ backgroundColor: 'red', color: 'white', height: 30, fontSize: 16 }}onClick={() => onDelete(postIdStr)}>Delete</Button>
+                </Stack>
+                
                 <TextField
                     label="Title" 
                     type="post-title" 
