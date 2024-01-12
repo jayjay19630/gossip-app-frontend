@@ -8,7 +8,7 @@ export const Create = () => {
             <Navbar onForumPage={true} onHomePage={false}/>
             <div className='body'>
                 <Card sx={{ width: 900 }}>
-                    <CreateUpdatePostForm state='create'/>
+                    <CreateUpdatePostForm state='create' postId={undefined}/>
                 </Card>
             </div>
         </Stack>

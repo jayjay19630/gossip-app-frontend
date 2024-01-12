@@ -8,6 +8,7 @@ import { Login } from './pages/Login';
 import { Forum } from './pages/Forum';
 import { Create } from './pages/CreatePost';
 import { View } from './pages/ViewPost';
+import { Edit } from './pages/EditPost';
 
 function App() {
   
@@ -34,7 +35,10 @@ function App() {
       <Route path='login' element={<ThemeProvider theme={theme}><Login/></ThemeProvider>}/>
       <Route path='posts'>
         <Route path='new' element={<ThemeProvider theme={theme}><Create/></ThemeProvider>}/>
-        <Route path=':postId' element={<ThemeProvider theme={theme}><View/></ThemeProvider>}/>
+        <Route path=':postId'>
+          <Route path='edit' element={<ThemeProvider theme={theme}><Edit/></ThemeProvider>}/>
+          <Route path='' element={<ThemeProvider theme={theme}><View/></ThemeProvider>}/>
+        </Route>
         <Route path='' element={<ThemeProvider theme={theme}><Forum/></ThemeProvider>}/>
       </Route>
     </Routes>

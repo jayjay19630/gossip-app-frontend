@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
 import './Navbar.css'
+
+//import router and mui library
+import { Link } from 'react-router-dom'
 import { Person } from '@mui/icons-material';
 
+//navigation bar component with links that render conditionally based on which page you are on
 export const Navbar = (props: { onHomePage: boolean, onForumPage: boolean }) => {
-
-
-
     return (
         <div className="navbar" style={{ backgroundColor: props.onHomePage ? '#f7c516' : '#FFC000'}}>
             <div className='logo-text'><img src='/src/assets/images/grape.png' alt='error'></img> grapevine</div>

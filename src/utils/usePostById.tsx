@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { URL_NAME } from "../data/url";
 import { useNavigate } from "react-router-dom";
 
-export const usePostById = (postId: string | undefined) => {
+export const usePostById = (postId: string | undefined, setDefaultTitle: Function | undefined, setDefaultContent: Function | undefined) => {
 
     //navigate function for when user is not authenticated by JWT
     const navigate = useNavigate();
@@ -28,6 +28,10 @@ export const usePostById = (postId: string | undefined) => {
             })
             .then(data => {
                 setPostData(data);
+                if (setDefaultContent !== undefined && setDefaultTitle !== undefined) {
+                    setDefaultTitle(data.post.title);
+                    setDefaultContent(data.post.content);
+                }
             })
             .finally(() => setLoading(false))
     }, [])

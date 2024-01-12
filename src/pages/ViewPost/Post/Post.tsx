@@ -36,7 +36,7 @@ export const Post = (props: PostByIdType) => {
                         <Typography sx={{fontSize: 12, color: 'gray'}} gutterBottom>
                             {"Posted by " + username + ", last updated " + date} 
                         </Typography>
-                        {username === current_user && <Link to='edit'><Button className="edit-button" sx={{backgroundColor: "orange", color: "black", fontSize: 10, borderRadius: 1, width: 100, alignSelf: 'end' }}>Edit Content</Button></Link>}
+                        {username === current_user && <Link to='edit'><Button className="edit-button" sx={{backgroundColor: "#f36e0c", color: "black", fontSize: 10, borderRadius: 1, width: 100, alignSelf: 'end' }}>Edit Content</Button></Link>}
                     </Stack>   
                     <Typography sx={{fontSize: 15}}>
                         {content} 

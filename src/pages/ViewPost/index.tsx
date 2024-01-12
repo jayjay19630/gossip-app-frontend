@@ -13,7 +13,7 @@ export const View = () => {
 
     //extracting post id and post data
     let { postId } = useParams();
-    let { postData, loading } = usePostById(postId) as { postData: PostByIdType | undefined, loading: boolean };
+    let { postData, loading } = usePostById(postId, undefined, undefined) as { postData: PostByIdType | undefined, loading: boolean };
 
     //rendering component depending on loading state
     if (loading) return (

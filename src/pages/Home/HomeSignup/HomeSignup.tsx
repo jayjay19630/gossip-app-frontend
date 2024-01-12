@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { UIButton } from '../../../components/ui/UIButton'
+import { UIButton } from '../../../components/Button/UIButton'
 import './HomeSignup.css'
 
 //signup component with link to signup page
