@@ -5,7 +5,7 @@ import { Card, CardActions, CardContent, Divider, Typography } from '@mui/materi
 
 //import relevant components and types
 import { CommentSection } from './CommentSection/CommentSection'
-import { Tag } from '../../../components/tags/Tag'
+import { Tag } from '../../../components/Tag/Tag'
 import { PostByIdType } from '../../../data/PostType'
 
 export const Post = (props: PostByIdType) => {
@@ -25,7 +25,7 @@ export const Post = (props: PostByIdType) => {
                     <Typography sx={{fontSize: 24, fontWeight: 550}}>
                         {title} 
                     </Typography>   
-                    {tags.map(tag => <Tag key={tag} tagname={tag} clickable={false} id={tag} tagsArr={[]} passChildData={undefined}></Tag>)}
+                    {tags.map(tag => <Tag key={tag} tagName={tag} clickable={false} id={tag} tagsArr={[]} passChildData={undefined}></Tag>)}
                 </CardActions>
                 <CardContent sx={{paddingTop: 0}}>   
                     <Typography sx={{fontSize: 12, color: 'gray'}} gutterBottom>

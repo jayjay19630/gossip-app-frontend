@@ -1,5 +1,5 @@
 import './HomeBody.css'
-import { Tag } from '../../../components/tags/Tag';
+import { Tag } from '../../../components/Tag/Tag';
 
 //ui components and icons from mui library
 import { Card, CardActionArea, CardContent, Typography, CardActions, IconButton } from '@mui/material'
@@ -54,8 +54,8 @@ export const HomeBody = () => {
                         <Typography sx={{fontSize: 16}}>
                                 {"155 Likes"} 
                         </Typography>
-                        <Tag tagname={'NUS'} clickable={false} id={0} tagsArr={[]} passChildData={undefined}></Tag>
-                        <Tag tagname={'Computer Science'} clickable={false} id={1} tagsArr={[]} passChildData={undefined}></Tag>
+                        <Tag tagName={'NUS'} clickable={false} id={0} tagsArr={[]} passChildData={undefined}></Tag>
+                        <Tag tagName={'Computer Science'} clickable={false} id={1} tagsArr={[]} passChildData={undefined}></Tag>
                     </CardActions>
                 </Card>
             </div>

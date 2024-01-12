@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 //import relevant components, types and util functions
-import { Tag } from '../../../../components/tags/Tag';
+import { Tag } from '../../../../components/Tag/Tag';
 import { PostType } from '../../../../data/PostType';
 import { incrementLike } from '../../../../utils/incrementLike';
 import { decrementLike } from '../../../../utils/decrementLike';
@@ -75,7 +75,7 @@ export const Post = (props: PostType) => {
                 <Typography sx={{fontSize: 12}}>
                         {likes + " Likes"} 
                 </Typography>
-                {tags.map(tag => <Tag key={tag} tagname={tag} clickable={false} id={tag} tagsArr={[]} passChildData={undefined}></Tag>)}
+                {tags.map(tag => <Tag key={tag} tagName={tag} clickable={false} id={tag} tagsArr={[]} passChildData={undefined}></Tag>)}
             </CardActions>
         </Card>
     );

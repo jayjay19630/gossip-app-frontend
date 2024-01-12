@@ -1,58 +1,50 @@
+import './createupdatepostform.css';
+
+//importing react hook form, router and mui library components
 import { useForm } from "react-hook-form";
-import { URL_NAME } from "../../../data/url";
 import { useNavigate } from "react-router-dom";
 import { Stack } from "@mui/system";
 import { Button, TextField } from "@mui/material";
-import './createupdatepostform.css';
+
+//importing useState from react
 import { useState } from "react";
-import { TagList } from "../../taglist/TagList";
 
-type FormValues = {
-    title: string;
-    content: string;
-}
+//importing relevant components and utils
+import { TagList } from "../../../pages/CreatePost/Taglist/TagList";
+import { createPost } from "../../../utils/postPost";
 
-export const CreateUpdatePostForm = () => {
+//form component for creating and updating posts
+export const CreateUpdatePostForm = (props: {state: string}) => {
 
+    //navigate function
+    const navigate = useNavigate();
+
+    //creating form using react hook form library
     const form = useForm({
         defaultValues: {
             title: "",
             content: ""
         }
     })
-
-    const navigate = useNavigate();
     const { register, handleSubmit, formState } = form;
     const { errors } = formState;
+
+    //creating state for list of tags selected by user during creation of post
     const [ toggledTagsArr, setToggledTagsArr ] = useState([]);
 
-    const PostSubmit = (data: FormValues) => {
-        fetch(`${URL_NAME}/posts`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('token')
-            },
-            body: JSON.stringify({
-                post: {
-                    title: data.title,
-                    content: data.content,
-                    user_id: localStorage.getItem('user_id'),
-                    tag_ids: toggledTagsArr,
-                }
-            })
-        })
-            .then((response) => {
-                return response.json();
-            })
-            .then(() => {
-                navigate("/posts")
-            })
+    //onSubmit function upon creation of post
+    const onCreateSubmit = (data: {title: string, content: string}) => {
+        createPost(data.title, data.content, toggledTagsArr).then(() => navigate("/posts"));
     }
     
+    const onEditSubmit = (data: {title: string, content: string}) => {
+        
+    }
 
+    //renders form component conditionally depending on whether 
+    //the form state is an edit form or a create form
     return (
-        <form className="create-update-post" onSubmit={handleSubmit(PostSubmit)} noValidate>
+        <form className="create-update-post" onSubmit={handleSubmit(props.state === "create" ? onCreateSubmit : onEditSubmit)} noValidate>
             <Stack spacing={2} width={845}>
                 <h1>Create New Post</h1>
                 <TextField

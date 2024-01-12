@@ -4,8 +4,9 @@ import { TagType } from "../../data/TagType";
 
 export const Tag = (props: TagType) => {
 
-    const setToggledTagsArr = props.passChildData;
+    const setToggledTagsArr = props.passChildData as Function;
     const toggledTagsArr = props.tagsArr;
+    const tagId = props.id as number;
 
     function toggleClicked(id: number) {
         const index = toggledTagsArr.indexOf(id);
@@ -26,13 +27,13 @@ export const Tag = (props: TagType) => {
                 onClick={() => {
                     setClick(!click);
                     if (props.passChildData !== undefined) {
-                        toggleClicked(props.id);
+                        toggleClicked(tagId);
                     }
                 }}
                 disableRipple
             >
                 <Typography sx={{ fontSize: 12, fontWeight: 'bold' }}>
-                    {props.tagname}
+                    {props.tagName}
                 </Typography>
             </CardActionArea>
         </Card>
