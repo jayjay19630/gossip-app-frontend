@@ -28,12 +28,12 @@ export const Forum = () => {
     const filterData = (query: string, postData: PostArray) => {
         if (query === "" && tagNameList.length === 0) {
           return postData;
+        } else if (tagNameList.length === 0) {
+          return postData.filter((data) => (data.post.title.toLowerCase().includes(query) || data.username.toLowerCase().includes(query)))
         } else {
-          return postData.filter((d) => 
-            checkSimilarArrays(d.tags, tagNameList) && (
-            d.post.title.toLowerCase().includes(query) || 
-            d.username.toLowerCase().includes(query)
-            ))
+          return postData.filter((data) => {
+            return checkSimilarArrays(data.tags, tagNameList) && (data.post.title.toLowerCase().includes(query) || data.username.toLowerCase().includes(query));
+          })
         }
       };
     const orderedPostData = filterData(searchQuery.toLowerCase(), postData).slice(0).reverse();
