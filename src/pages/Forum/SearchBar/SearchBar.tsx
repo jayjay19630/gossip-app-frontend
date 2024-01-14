@@ -25,7 +25,7 @@ export const SearchBar = (props: { setSearchQuery: Function }) => {
                         onInput={(e) => {
                             setSearchQuery(e.target.value);
                         }}
-                        label="Enter a post's title"
+                        label="Search for author or title..."
                         variant="outlined"
                         size="small"
                     />
