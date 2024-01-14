@@ -8,13 +8,26 @@ import { Loading } from '../../components/Loading/Loading';
 
 //import usePost fetch hook util function
 import { usePosts } from '../../utils/usePosts';
+import { useState } from 'react';
+import { PostArray } from '../../data/PostType';
 
 //forum component with navbar and content page. shows loading screen if necessary
 export const Forum = () => {
 
-    //get post data and loading state, then order posts in order of date published using reverse
+    //state for searchquery
+    const [searchQuery, setSearchQuery] = useState("");
+    console.log(searchQuery);
+
+    //get post data and loading state, filter data according to query, and order posts in order of date published using reverse
     const {postData, loading} = usePosts();
-    const orderedPostData = postData.slice(0).reverse();
+    const filterData = (query: string, postData: PostArray) => {
+        if (query === "") {
+          return postData;
+        } else {
+          return postData.filter((d) => d.post.title.toLowerCase().includes(query));
+        }
+      };
+    const orderedPostData = filterData(searchQuery, postData).slice(0).reverse();
 
     //create loading screen while fetching posts
     if (loading) return (
@@ -28,7 +41,7 @@ export const Forum = () => {
     return (
         <div className='forum'>
             <Navbar onHomePage={false} onForumPage={true}/>
-            <SearchBar/>
+            <SearchBar setSearchQuery={setSearchQuery}/>
             <ForumContent postData={orderedPostData}/>
         </div>
     );
