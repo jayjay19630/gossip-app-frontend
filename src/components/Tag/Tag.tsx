@@ -14,8 +14,7 @@ export const Tag = (props: TagType) => {
     function toggleClicked(id: number) {
         const index = toggledTagsArr.indexOf(id);
         if (index > -1) {
-            toggledTagsArr.splice(index, 1);
-            setToggledTagsArr(toggledTagsArr);
+            setToggledTagsArr(toggledTagsArr.filter(tag => tag !== id));
         } else {
             setToggledTagsArr([...toggledTagsArr, id]);
         }

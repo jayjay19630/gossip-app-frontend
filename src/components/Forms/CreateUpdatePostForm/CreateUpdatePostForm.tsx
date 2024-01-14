@@ -9,7 +9,7 @@ import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 
 //importing relevant components and utils
-import { TagList } from "../../../pages/CreatePost/Taglist/TagList";
+import { TagList } from "../../Taglist/TagList";
 import { createPost } from "../../../utils/postPost";
 import { updatePost } from '../../../utils/updatePost';
 import { usePostById } from '../../../utils/usePostById';

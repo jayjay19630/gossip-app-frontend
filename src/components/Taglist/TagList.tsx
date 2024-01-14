@@ -2,9 +2,9 @@
 import { Stack } from "@mui/material";
 
 //import relevant tag types
-import { useTagData } from "../../../utils/useTagData";
-import { Tag } from "../../../components/Tag/Tag";
-import { TagDataType } from "../../../data/TagType";
+import { useTagData } from "../../utils/useTagData";
+import { Tag } from "../Tag/Tag";
+import { TagDataType } from "../../data/TagType";
 
 //tag list component which has clickable tags and also manages state of tagsArr in parent component (see create post index for details)
 export const TagList = (props: {passChildData: Function, tagsArr: number[]}) => {
