@@ -6,15 +6,15 @@ import { Stack } from "@mui/system";
 import { Button, TextField } from "@mui/material";
 
 //importing useState from react
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //importing relevant components and utils
-import { TagList } from "../../Taglist/TagList";
 import { createPost } from "../../../utils/postPost";
 import { updatePost } from '../../../utils/updatePost';
 import { usePostById } from '../../../utils/usePostById';
 import { useNavigate } from 'react-router-dom';
 import { deletePost } from '../../../utils/deletePost';
+import { TagList } from '../../Taglist/TagList';
 
 //form component for creating and updating posts
 export const CreateUpdatePostForm = (props: {state: string, postId: string | undefined}) => {
@@ -27,20 +27,24 @@ export const CreateUpdatePostForm = (props: {state: string, postId: string | und
     const [defaultTitle, setDefaultTitle] = useState("");
     const [defaultContent, setDefaultContent] = useState("");
 
-    //changes default title and content if on edit mode
+    //creating form using react hook form library and resetting default value after api call
     if (props.state === "edit") {
         usePostById(postIdStr, setDefaultTitle, setDefaultContent);
     }
-    
-    //creating form using react hook form library
     const form = useForm({
         defaultValues: {
-            title: "",
-            content: ""
+            title: defaultTitle,
+            content: defaultContent
         }
     })
-    const { register, handleSubmit, formState } = form;
+    const { register, handleSubmit, formState, reset } = form;
     const { errors } = formState;
+    useEffect(() => {
+        reset({
+            title: defaultTitle,
+            content: defaultContent
+          });
+    }, [defaultTitle]);
 
     //creating state for list of tags selected by user during creation of post
     const [ toggledTagsArr, setToggledTagsArr ] = useState([]);
@@ -67,29 +71,31 @@ export const CreateUpdatePostForm = (props: {state: string, postId: string | und
             <Stack spacing={2} width={845}>
                 <Stack direction={'row'} alignItems={'center'} spacing={2}>
                     <h1>{props.state === "create" ? "Create New Post" : "Edit Post"}</h1>
-                    <Button sx={{ backgroundColor: 'red', color: 'white', height: 30, fontSize: 16 }}onClick={() => onDelete(postIdStr)}>Delete</Button>
+                    {props.state === 'edit' && <Button sx={{ backgroundColor: 'red', color: 'white', height: 30, fontSize: 16 }}onClick={() => onDelete(postIdStr)}>Delete</Button>}
                 </Stack>
-                
                 <TextField
                     label="Title" 
                     type="post-title" 
-                    value={defaultTitle}
+                    defaultValue=""
                     {...register("title", {required: 'Title is required'})}
                     error={!!errors.title}
                     helperText={errors.title?.message}
                     InputLabelProps={{
                         style: { padding: 0 }, 
+                        shrink: true
                     }}
+                    
                 />
                 <TextField 
                     label="Content"
+                    defaultValue=""
                     type="post-content" 
-                    value={defaultContent}
                     {...register("content", {required: 'Content is required'})}
                     error={!!errors.content}
                     helperText={errors.content?.message}
                     InputLabelProps={{
                         style: { padding: 0 }, 
+                        shrink: true
                     }}
                     multiline
                     rows={6}

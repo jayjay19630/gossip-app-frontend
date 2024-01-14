@@ -16,7 +16,6 @@ export const SearchBar = (props: { setSearchQuery: Function, setToggledTagsArr: 
         props.setSelectedState(event.target.value as string);
     }
 
-
     return (
         <Stack alignItems={'center'} sx={{marginTop: 4, marginBottom: 4}}>
             <form className='search-input'>
