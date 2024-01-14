@@ -10,9 +10,8 @@ import { PostArray } from '../../data/PostType';
 //import hooks and relevant types
 import { usePosts } from '../../utils/usePosts';
 import { useState } from 'react';
-import { useTagData } from '../../utils/useTagData';
-import { checkSimilarArrays } from '../../utils/checkSimilarArray';
-import { TagDataType } from '../../data/TagType';
+import { filterPostData } from '../../utils/filterPostData';
+import { orderPostData } from '../../utils/orderPostData';
 
 //forum component with navbar and content page. shows loading screen if necessary
 export const Forum = () => {
@@ -20,23 +19,15 @@ export const Forum = () => {
     //state for searchquery and toggled tags
     const [searchQuery, setSearchQuery] = useState("");
     const [toggledTagsArr, setToggledTagsArr] = useState([]);
-    const tagList = useTagData() as TagDataType[];
-    const tagNameList = toggledTagsArr.map(tagId => tagList[tagId - 1].tag_name);
     
-    //get post data and loading state, filter data according to query, and order posts by date published using reverse
+
+    //state for filter mode (likes or date)
+    const [selectedState, setSelectedState] = useState("date"); 
+    
+    //get post data and loading state, filter data according to query, and order posts
     const {postData, loading} = usePosts();
-    const filterData = (query: string, postData: PostArray) => {
-        if (query === "" && tagNameList.length === 0) {
-          return postData;
-        } else if (tagNameList.length === 0) {
-          return postData.filter((data) => (data.post.title.toLowerCase().includes(query) || data.username.toLowerCase().includes(query)))
-        } else {
-          return postData.filter((data) => {
-            return checkSimilarArrays(data.tags, tagNameList) && (data.post.title.toLowerCase().includes(query) || data.username.toLowerCase().includes(query));
-          })
-        }
-      };
-    const orderedPostData = filterData(searchQuery.toLowerCase(), postData).slice(0).reverse();
+    const filteredPostData = filterPostData(searchQuery, postData, toggledTagsArr);
+    const orderedPostData = orderPostData(filteredPostData, selectedState) as PostArray;
 
     //show all posts after loading and fetching posts
     return (
@@ -45,7 +36,7 @@ export const Forum = () => {
             {loading 
                 ? <Loading/> 
                 : <>
-                    <SearchBar setSearchQuery={setSearchQuery} setToggledTagsArr={setToggledTagsArr} tagsArr={toggledTagsArr}/>
+                    <SearchBar setSearchQuery={setSearchQuery} setToggledTagsArr={setToggledTagsArr} setSelectedState={setSelectedState} selectedState={selectedState} tagsArr={toggledTagsArr}/>
                     <ForumContent postData={orderedPostData}/>
                   </>
             }
