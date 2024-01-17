@@ -7,10 +7,13 @@ import { useNavigate } from "react-router-dom";
 
 //import relevant utils
 import { postComment } from "../../../utils/postComment";
+import { updateComment } from '../../../utils/updateComment';
 
 //component that allows users to create comments
-export const CreateUpdateCommentForm = (props: {postid: number, state: string}) => {
+export const CreateUpdateCommentForm = (props: {postid: number, commentid: number, state: string}) => {
 
+    console.log(props.postid);
+    console.log(props.commentid);
     //state can be edit mode or create mode
     const state = props.state;
 
@@ -33,7 +36,8 @@ export const CreateUpdateCommentForm = (props: {postid: number, state: string}) 
     }
 
     const onUpdateSubmit = (data: {content : string}) => {
-        
+        updateComment(props.commentid.toString(), data.content, props.postid.toString());
+        navigate(0);
     }
 
     return (

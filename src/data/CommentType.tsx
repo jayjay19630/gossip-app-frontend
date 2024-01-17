@@ -3,4 +3,5 @@ export type CommentType = {
     content: string,
     username: string,
     created_at: string,
+    belongsToPostId: number
 }

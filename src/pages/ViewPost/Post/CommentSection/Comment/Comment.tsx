@@ -39,8 +39,7 @@ export const Comment = (props: CommentType) => {
                 {username === loggedInUsername && <Button className="comment-button" onClick={onClick} sx={{backgroundColor: "orange", color: "black", marginLeft: 2, fontSize: 10, borderRadius: 2, width: 100, alignSelf: 'end' }}>{mode === "view" ? "Edit Comment" : "Go Back"}</Button>}
             </div>
             {mode === "view" && <CommentBody content={content} date={date}></CommentBody>}
-            {mode === "edit" && <CreateUpdateCommentForm postid={0} state='edit'></CreateUpdateCommentForm>}
-            
+            {mode === "edit" && <CreateUpdateCommentForm postid={props.belongsToPostId} commentid={props.id} state='edit'></CreateUpdateCommentForm>}
         </div>
     );
 }
