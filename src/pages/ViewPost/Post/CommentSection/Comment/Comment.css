@@ -12,14 +12,4 @@
         margin-bottom: 2px;
     }
 
-    .comment-body {
-        margin-bottom: 5px;
-        margin-left: 25px;
-        font-size: 12px;
-        overflow-wrap: break-word;
-    }
-
-    .comment-footer {
-        font-size: 10px;
-        margin-left: 25px;
-    }
+    
