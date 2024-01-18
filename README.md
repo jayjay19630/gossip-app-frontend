@@ -2,16 +2,14 @@
 
 This frontend app, named NUS Grapevine, allows online users to interact with each other on a web forum-like page and discuss topics relevant to certain tags, such as academics, extracurriculars and entertainment. This project was made as a submission to the NUS CVWO assignment 2023/2024. This app wil support several features:
 
-* **User authentication and registration:** Users can sign up for an account, solely authenticated by their username
-* **Post creation:** Author can create new posts with a title, text content and several tags if necessary (to be added in future)
-* **Post management:** Author can view, edit, and delete their own posts. (to be added in future, can only view)
-* **Commenting and Liking:** Users can add comments and likes to posts. (to be added in future)
+* **User authentication and registration:** Users can sign up for an account, solely authenticated by their username.
+* **Post creation:** Author can create new posts with a title, text content and several tags if necessary.
+* **Post management:** Author can view, edit, and delete their own posts.
+* **Commenting and Liking:** Users can add and edit comments and add likes to posts. 
 
 ## Getting Started
 
-As of 5 January 2024, this app is not yet being deployed. However, it will be deployed sometime in the future.
-
-To get a local copy up and running in the mean time, note the prerequisites and follow these steps.
+To get a local copy up and running, note the prerequisites and follow these steps.
 
 ### Prerequisites
 
