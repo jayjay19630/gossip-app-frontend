@@ -1,4 +1,4 @@
-import { URL_NAME } from "../data/url";
+import { URL_NAME } from "../../config";
 
 export const postComment = (content: string, post_id: number) => {
     fetch(`${URL_NAME}/posts/${post_id}/comments`, {

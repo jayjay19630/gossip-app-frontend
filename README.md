@@ -26,5 +26,6 @@ To get a local copy up and running, note the prerequisites and follow these step
 4. Copy and paste the following code into the terminal: git clone https://github.com/positivelyjon/gossip-app-frontend
 5. Run `cd gossip-app-frontend`
 6. Run `npm install`
-7. Run `npm run dev`
-8. Open http://localhost:5173 to view the app
+7. Navigate to config.tsx file in root directory. Change onLocalComputer to true and on RenderDeploy to false.
+8. Run `npm run dev`
+9. Open http://localhost:5173 to view the app

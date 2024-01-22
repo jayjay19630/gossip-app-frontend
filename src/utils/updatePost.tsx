@@ -1,4 +1,4 @@
-import { URL_NAME } from "../data/url";
+import { URL_NAME } from "../../config";
 
 export const updatePost = (title: string, content: string, tagsArr: number[], postId: string) => {
 

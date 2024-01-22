@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { URL_NAME } from "../data/url";
+import { URL_NAME } from "../../config";
 import { useNavigate } from "react-router-dom";
 
 //custom hook for getting all posts

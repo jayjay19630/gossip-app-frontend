@@ -1,4 +1,4 @@
-import { URL_NAME } from "../data/url"
+import { URL_NAME } from "../../config"
 
 
 export const deletePost = (postId: string) => {

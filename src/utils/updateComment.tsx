@@ -1,4 +1,4 @@
-import { URL_NAME } from "../data/url";
+import { URL_NAME } from "../../config";
 
 export const updateComment = (comment_id: string, content: string, postId: string | null) => {
 
