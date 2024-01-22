@@ -3,7 +3,7 @@ import { TagDataType } from "../data/TagType";
 import { checkSimilarArrays } from "./checkSimilarArray";
 import { useTagData } from "./useTagData";
 
-export const filterPostData = (query: string, postData: PostArray, toggledTagsArr: string[]) => {
+export const filterPostData = (query: string, postData: PostArray, toggledTagsArr: number[]) => {
 
     const tagList = useTagData() as TagDataType[];
     const tagNameList = toggledTagsArr.map(tagId => tagList[tagId - 1].tag_name);

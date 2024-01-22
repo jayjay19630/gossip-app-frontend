@@ -1,4 +1,5 @@
 import "./HomeHeader.css"
+import headerImage from "../../../assets/images/gossip-ear.jpeg"
 
 //home header section with catchy headline
 export const HomeHeader = () => {
@@ -8,7 +9,7 @@ export const HomeHeader = () => {
                 <div className="home-title">grapevine</div>
                 <div className="home-subtitle">a web forum for all things NUS</div>
             </div>
-            <img src="src/assets/images/gossip-ear.jpeg"></img>
+            <img src={headerImage}></img>
         </div>
     );
 }
