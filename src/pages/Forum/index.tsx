@@ -1,6 +1,6 @@
 import './index.css'
 
-//import components and relevantfrom other files
+//import components and relevant from other files
 import { Navbar } from '../../components/Navbar/Navbar';
 import { ForumContent } from './ForumContent/ForumContent';
 import { SearchBar } from './SearchBar/SearchBar';

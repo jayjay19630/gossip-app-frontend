@@ -1,6 +1,6 @@
 import { Button, Typography } from "@mui/material";
-import { Navbar } from "../../components/Navbar/Navbar";
 import { Link } from "react-router-dom";
+import { Navbar } from "../../components/Navbar/Navbar";
 import './Error.css'
 
 export const Error = () => {
