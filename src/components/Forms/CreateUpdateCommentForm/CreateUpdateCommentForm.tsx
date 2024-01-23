@@ -1,4 +1,4 @@
-import './createupdatecommentform.css'
+import './CreateUpdateCommentForm.css'
 
 //import reacthookform library, router library and mui components
 import { useForm } from "react-hook-form";

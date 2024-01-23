@@ -1,4 +1,4 @@
-import './createupdatepostform.css';
+import './CreateUpdatePostForm.css';
 
 //importing react hook form, router and mui library components
 import { useForm } from "react-hook-form";
