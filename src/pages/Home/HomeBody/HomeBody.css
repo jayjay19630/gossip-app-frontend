@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;700&display=swap');
+
+.home-body {
+    background-color: black;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    }
+
+    .example-text {
+        font-family: 'DM Serif Display', sans-serif;
+        color: white;
+        font-size: 30px;
+    }
+
+    .example {
+        height: 300px;
+        width: 900px;
+        background-color: #f7d34f;
+        border-radius: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
