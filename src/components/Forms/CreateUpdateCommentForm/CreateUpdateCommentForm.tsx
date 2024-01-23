@@ -12,8 +12,6 @@ import { updateComment } from '../../../utils/updateComment';
 //component that allows users to create comments
 export const CreateUpdateCommentForm = (props: {postid: number, commentid: number, state: string}) => {
 
-    console.log(props.postid);
-    console.log(props.commentid);
     //state can be edit mode or create mode
     const state = props.state;
 
@@ -32,12 +30,12 @@ export const CreateUpdateCommentForm = (props: {postid: number, commentid: numbe
     //onSubmit function to send data in form and refresh page
     const onPostSubmit = (data: { content: string }) => {
         postComment(data.content, props.postid);
-        navigate(0);
+        navigate(`/posts/`);
     }
 
     const onUpdateSubmit = (data: {content : string}) => {
         updateComment(props.commentid.toString(), data.content, props.postid.toString());
-        navigate(0);
+        navigate("/posts/");
     }
 
     return (
