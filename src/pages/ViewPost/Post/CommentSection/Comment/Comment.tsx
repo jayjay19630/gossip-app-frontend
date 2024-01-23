@@ -1,4 +1,4 @@
-import './comment.css'
+import './Comment.css'
 
 //import mui icon
 import { Person } from "@mui/icons-material";
