@@ -1,4 +1,4 @@
-import './commentsection.css';
+import './CommentSection.css';
 
 //import relevant components and type
 import { CreateUpdateCommentForm } from '../../../../components/Forms/CreateUpdateCommentForm/CreateUpdateCommentForm';
