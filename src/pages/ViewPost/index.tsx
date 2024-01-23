@@ -2,8 +2,8 @@
 import { useParams } from "react-router-dom"
 
 //import relevant util functions and components
-import { Navbar } from "../../components/Navbar/Navbar";
 import { Post } from "./Post/Post";
+import { Navbar } from "../../components/Navbar/Navbar";
 import { Loading } from "../../components/Loading/Loading";
 import { usePostById } from "../../utils/usePostById";
 import { PostByIdType } from "../../data/PostType";
