@@ -9,7 +9,7 @@ This frontend app, named NUS Grapevine, allows online users to interact with eac
 
 ## Getting Started
 
-To get a local copy up and running, note the prerequisites and follow these steps.
+To visit the deployed version of this website, you may check out https://nusgrapevine.netlify.app. Otherwise, to get a local copy up and running, note the prerequisites and follow these steps.
 
 ### Prerequisites
 
